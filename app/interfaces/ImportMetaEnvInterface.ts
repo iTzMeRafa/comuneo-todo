@@ -4,6 +4,7 @@ interface ImportMetaEnv {
 	readonly NODE_ENVIRONMENT: string;
 	readonly NEXT_PUBLIC_NODE_ENVIRONMENT: string;
 	readonly PROCESS_NAME: string;
+	readonly VITE_HOST_URL: string;
 
 	// Appwrite
 	readonly VITE_APPWRITE_PROJECT_ID: string;

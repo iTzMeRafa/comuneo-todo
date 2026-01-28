@@ -35,6 +35,12 @@ export default function Login() {
 				email: data.email,
 				password: data.password,
 			});
+			const user = await account.get();
+
+			if (!user.emailVerification) {
+				await account.createVerification(`${import.meta.env.VITE_HOST_URL}/verify-email`);
+			}
+
 			window.location.reload();
 		} catch (error: any) {
 			toaster.create({
