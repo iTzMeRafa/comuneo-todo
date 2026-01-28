@@ -67,8 +67,8 @@ function TodoList(): JSX.Element {
 		fetchTodos();
 	}, [userAccount]);
 
-	// Toggle parent + children
-	const toggleTodoRecursive = (id: string, checked: boolean) => {
+	// Toggle parent + children recursively AND update database
+	const toggleTodoRecursive = async (id: string, checked: boolean) => {
 		const getAllChildIds = (parentId: string): string[] => {
 			const directChildren = todos.filter((t) => t.parent_id === parentId);
 			return directChildren.reduce(
@@ -78,10 +78,24 @@ function TodoList(): JSX.Element {
 		};
 
 		const childIds = getAllChildIds(id);
+		const allIdsToUpdate = [id, ...childIds];
 
-		setTodos((prev) =>
-			prev.map((todo) => (todo.$id === id || childIds.includes(todo.$id) ? { ...todo, checked } : todo))
-		);
+		// Update local state immediately
+		setTodos((prev) => prev.map((todo) => (allIdsToUpdate.includes(todo.$id) ? { ...todo, checked } : todo)));
+
+		// Update Appwrite rows
+		try {
+			for (const todoId of allIdsToUpdate) {
+				await tablesDB.updateRow({
+					databaseId: 'comuneo-db',
+					tableId: 'todo',
+					rowId: todoId,
+					data: { checked },
+				});
+			}
+		} catch (err) {
+			console.error('Failed to update todos in DB:', err);
+		}
 	};
 
 	// Delete parent + children

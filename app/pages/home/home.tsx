@@ -23,7 +23,17 @@ export function Home(props: PropsInterface): JSX.Element {
 		})();
 	}, [account]);
 
-	return <Box>{!userAccount ? <LandingSection /> : <TodoList />}</Box>;
+	return (
+		<Box>
+			{!userAccount ? (
+				<LandingSection />
+			) : (
+				<Box mb={40}>
+					<TodoList />
+				</Box>
+			)}
+		</Box>
+	);
 }
 
 export default Home;
