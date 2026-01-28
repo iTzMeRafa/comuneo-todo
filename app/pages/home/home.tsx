@@ -18,8 +18,12 @@ export function Home(props: PropsInterface): JSX.Element {
 
 	useEffect(() => {
 		(async () => {
-			const userAccount = await account.get();
-			setUserAccount(userAccount);
+			try {
+				const userAccount = await account.get();
+				setUserAccount(userAccount);
+			} catch (err) {
+				setUserAccount(null);
+			}
 		})();
 	}, [account]);
 

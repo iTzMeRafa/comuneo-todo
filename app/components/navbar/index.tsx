@@ -36,11 +36,12 @@ function Navbar(props: PropsInterface): JSX.Element {
 
 	useEffect(() => {
 		(async () => {
-			const userAccount = await account.get();
-			setUserAccount(userAccount);
-
-			console.log('userAccount');
-			console.log(userAccount);
+			try {
+				const userAccount = await account.get();
+				setUserAccount(userAccount);
+			} catch (err) {
+				setUserAccount(null);
+			}
 		})();
 	}, [account]);
 
