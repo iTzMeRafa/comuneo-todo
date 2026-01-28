@@ -11,6 +11,7 @@
   "dependencies": {
     "@chakra-ui/react": "^3.31.0",
     "@emotion/react": "^11.14.0",
+    "@hookform/resolvers": "^5.2.2",
     "@react-router/node": "7.12.0",
     "@react-router/serve": "7.12.0",
     "appwrite": "^21.5.0",
@@ -18,7 +19,11 @@
     "lucide-react": "^0.563.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router": "7.12.0"
+    "react-hook-form": "^7.71.1",
+    "react-router": "7.12.0",
+    "yup": "^1.7.1",
+    "yup-locale-de": "github:skress/yup-locale-de",
+    "yup-locales": "^1.2.28"
   },
   "devDependencies": {
     "@react-router/dev": "7.12.0",

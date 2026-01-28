@@ -1,4 +1,7 @@
-import React, { JSX, useContext } from 'react';
+import React, { JSX, useContext, useEffect } from 'react';
+import { client } from 'app/libs/appwrite';
+import { account } from 'app/libs/appwrite';
+import { useNavigate } from 'react-router';
 import { Link } from 'react-router';
 import {
 	Box,
@@ -16,6 +19,7 @@ import {
 } from '@chakra-ui/react';
 import { ArrowRightIcon, ChevronsUpDown, LogOutIcon, SettingsIcon } from 'lucide-react';
 import { ThemeContext } from 'app/contexts/themeContextChakra';
+import { UserInterface } from 'app/interfaces/UserInterface';
 
 interface PropsInterface {
 	children?: React.ReactNode;
@@ -35,11 +39,25 @@ const NAV_ITEMS = [
 function Navbar(props: PropsInterface): JSX.Element {
 	const { theme, setTheme } = useContext(ThemeContext);
 
+	const [userAccount, setUserAccount] = React.useState<UserInterface | null>(null);
+
+	let navigate = useNavigate();
+
+	useEffect(() => {
+		(async () => {
+			const userAccount = await account.get();
+			setUserAccount(userAccount);
+
+			console.log('userAccount');
+			console.log(userAccount);
+		})();
+	}, [account]);
+
 	const DesktopNav = () => {
 		return (
 			<Stack direction={'row'} gap={10} w={'100%'} justify={'center'}>
 				{NAV_ITEMS.map((navItem, index) => {
-					const textColorLight = 'gray.600';
+					const textColorLight = 'primary';
 
 					return (
 						<Box key={index.toString()}>
@@ -121,7 +139,7 @@ function Navbar(props: PropsInterface): JSX.Element {
 						gap={6}
 						w={{ base: 'auto', xl: '300px' }}
 					>
-						{1 === 1 && (
+						{!userAccount && (
 							<>
 								<Link to={'/login'}>
 									<Button
@@ -148,7 +166,7 @@ function Navbar(props: PropsInterface): JSX.Element {
 								</Link>
 							</>
 						)}
-						{['asd'].includes('asd2') && (
+						{!!userAccount && (
 							<Flex alignItems={'center'} gap={5}>
 								<Menu.Root>
 									<Menu.Trigger rounded="full" focusRing="outside">
@@ -202,7 +220,7 @@ function Navbar(props: PropsInterface): JSX.Element {
 													height={'40px'}
 													_hover={{ cursor: 'pointer' }}
 													mb={'1'}
-													onClick={() => null}
+													onClick={() => navigate('/settings')}
 												>
 													<SettingsIcon size={20} />
 													<Box flex="1" ml={3}>
@@ -210,16 +228,17 @@ function Navbar(props: PropsInterface): JSX.Element {
 													</Box>
 												</Menu.Item>
 												<Menu.Item
-													as={'a'}
-													// @ts-ignore
-													onClick={() => null}
 													value="logout"
-													height={'40px'}
 													_hover={{ cursor: 'pointer' }}
+													onClick={async () => {
+														await account.deleteSessions();
+														window.location.reload();
+													}}
+													height={'40px'}
 												>
 													<LogOutIcon size={20} />
 													<Box flex="1" ml={3}>
-														Logout
+														Abmelden
 													</Box>
 												</Menu.Item>
 											</Menu.Content>

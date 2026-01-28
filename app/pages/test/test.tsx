@@ -1,4 +1,4 @@
-import { client } from 'app/lib/appwrite';
+import { client } from 'app/libs/appwrite';
 
 export async function loader() {
 	return null;

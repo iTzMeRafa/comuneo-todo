@@ -1,6 +1,7 @@
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 
 import Wireframe from 'app/components/wireframe';
+import { Toaster } from 'app/components/toaster';
 import { ThemeProvider } from 'app/contexts/themeContextChakra';
 import { Box } from '@chakra-ui/react';
 
@@ -28,6 +29,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 			</head>
 			<body>
 				<ThemeProvider>
+					<Toaster />
 					<Wireframe>{children}</Wireframe>
 				</ThemeProvider>
 				<ScrollRestoration />

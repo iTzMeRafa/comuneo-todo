@@ -1,7 +1,7 @@
 import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react';
 
 let paletteCommon = {
-	primary: '#2B6CB0',
+	primary: '#27256F',
 	secondary: '#4FD1C5',
 	realBlack: '#000000',
 	realWhite: '#FFFFFF',
@@ -10,7 +10,7 @@ let paletteCommon = {
 		primary: '#EBF8FF',
 	},
 	dark: {
-		primary: '#215287',
+		primary: '#27256F',
 	},
 };
 
@@ -33,8 +33,8 @@ const paletteLight = {
 		focus: { value: '#2B6CB0' },
 		focusRing: {
 			value: {
-				base: '##2B6CB0',
-				_dark: '#2B6CB0',
+				base: '##27256F',
+				_dark: '#27256F',
 			},
 		},
 	},
@@ -46,11 +46,11 @@ const paletteDark = {
 		white: '#1B1B1F',
 		black: '#FFFFFF',
 		test: 'yellow',
-		focus: { value: '#2B6CB0' },
+		focus: { value: '#27256F' },
 		focusRing: {
 			value: {
-				base: '#2B6CB0',
-				_dark: '#2B6CB0',
+				base: '#27256F',
+				_dark: '#27256F',
 			},
 		},
 	},
