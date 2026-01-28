@@ -26,16 +26,7 @@ interface PropsInterface {
 	children?: React.ReactNode;
 }
 
-const NAV_ITEMS = [
-	{
-		label: 'Home',
-		href: '/',
-	},
-	{
-		label: 'Test',
-		href: '/test',
-	},
-];
+const NAV_ITEMS: { label: string; href: string }[] = [];
 
 function Navbar(props: PropsInterface): JSX.Element {
 	const { theme, setTheme } = useContext(ThemeContext);
@@ -113,13 +104,15 @@ function Navbar(props: PropsInterface): JSX.Element {
 						flex={{ base: '0 1 auto', xl: '0 0 auto' }}
 						w={{ base: '100%', xl: '300px' }}
 					>
-						<img
-							src={
-								'https://static.wixstatic.com/media/2d9376_684688cb9d90412f966decb89c54b243~mv2.jpg/v1/fill/w_494,h_138,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2d9376_684688cb9d90412f966decb89c54b243~mv2.jpg'
-							}
-							width={200}
-							alt={'Logo'}
-						/>
+						<Link to={'/'}>
+							<img
+								src={
+									'https://static.wixstatic.com/media/2d9376_684688cb9d90412f966decb89c54b243~mv2.jpg/v1/fill/w_494,h_138,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2d9376_684688cb9d90412f966decb89c54b243~mv2.jpg'
+								}
+								width={200}
+								alt={'Logo'}
+							/>
+						</Link>
 					</Flex>
 
 					<Flex
