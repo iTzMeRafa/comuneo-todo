@@ -7,6 +7,8 @@ import { Button, Field, Flex, Input, Separator, Text, Heading, Container } from 
 import { ArrowRightIcon } from 'lucide-react';
 import { toaster } from 'app/components/toaster';
 import { useNavigate } from 'react-router';
+import React, { useEffect } from 'react';
+import { UserInterface } from 'app/interfaces/UserInterface';
 
 export async function loader() {
 	return null;
@@ -14,6 +16,21 @@ export async function loader() {
 
 export default function Register() {
 	let navigate = useNavigate();
+
+	const [userAccount, setUserAccount] = React.useState<UserInterface | null>(null);
+
+	useEffect(() => {
+		(async () => {
+			const userAccount = await account.get();
+			setUserAccount(userAccount);
+		})();
+	}, [account]);
+
+	useEffect(() => {
+		if (userAccount) {
+			navigate('/');
+		}
+	}, [userAccount]);
 
 	const {
 		control,
