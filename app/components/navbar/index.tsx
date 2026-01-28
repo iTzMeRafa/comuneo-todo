@@ -20,6 +20,7 @@ import {
 import { ArrowRightIcon, ChevronsUpDown, LogOutIcon, SettingsIcon } from 'lucide-react';
 import { ThemeContext } from 'app/contexts/themeContextChakra';
 import { UserInterface } from 'app/interfaces/UserInterface';
+import { IMAGE } from 'app/services/imageService';
 
 interface PropsInterface {
 	children?: React.ReactNode;
@@ -172,11 +173,7 @@ function Navbar(props: PropsInterface): JSX.Element {
 									<Menu.Trigger rounded="full" focusRing="outside">
 										<Avatar.Root size="sm" _hover={{ cursor: 'pointer' }}>
 											<Avatar.Fallback name={'Günther'} />
-											<Avatar.Image
-												src={
-													'https://static.wixstatic.com/media/615bb7_c40d8b7fdca7426ba275c8ed17b85df3~mv2.jpg/v1/fill/w_943,h_817,al_c,q_85,enc_avif,quality_auto/615bb7_c40d8b7fdca7426ba275c8ed17b85df3~mv2.jpg'
-												}
-											/>
+											<Avatar.Image src={IMAGE.DEFAULT_AVATAR} />
 											<Float placement="bottom-end" offsetX="0" offsetY="1">
 												<Icon
 													_hover={{ cursor: 'pointer', shadow: 'xl' }}
@@ -200,18 +197,14 @@ function Navbar(props: PropsInterface): JSX.Element {
 														onClick={() => null}
 													>
 														<Avatar.Fallback name={'Günther'} />
-														<Avatar.Image
-															src={
-																'https://static.wixstatic.com/media/615bb7_c40d8b7fdca7426ba275c8ed17b85df3~mv2.jpg/v1/fill/w_943,h_817,al_c,q_85,enc_avif,quality_auto/615bb7_c40d8b7fdca7426ba275c8ed17b85df3~mv2.jpg'
-															}
-														/>
+														<Avatar.Image src={IMAGE.DEFAULT_AVATAR} />
 													</Avatar.Root>
 													<Flex direction={'column'}>
 														<Text fontWeight={600} truncate w={'200px'}>
-															Günther
+															{userAccount.name}
 														</Text>
 														<Text truncate w={'200px'}>
-															günther@gmail.com
+															{userAccount.email}
 														</Text>
 													</Flex>
 												</Flex>
@@ -224,7 +217,7 @@ function Navbar(props: PropsInterface): JSX.Element {
 												>
 													<SettingsIcon size={20} />
 													<Box flex="1" ml={3}>
-														Settings
+														Einstellungen
 													</Box>
 												</Menu.Item>
 												<Menu.Item
