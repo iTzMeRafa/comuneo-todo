@@ -1,4 +1,3 @@
-import { client } from 'app/libs/appwrite';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import { account } from 'app/libs/appwrite';
@@ -7,12 +6,15 @@ import { ArrowRightIcon } from 'lucide-react';
 import { toaster } from 'app/components/toaster';
 import { UserLoginFormInterface, userLoginFormSchema } from 'app/schemas/userLoginFormSchema';
 import GuestRoute from 'app/components/guestRoute';
+import { useNavigate } from 'react-router';
 
 export async function loader() {
 	return null;
 }
 
 export default function Login() {
+	let navigate = useNavigate();
+
 	const {
 		control,
 		handleSubmit,
@@ -97,7 +99,7 @@ export default function Login() {
 							_hover={{ bg: 'gray.50', _dark: { bg: 'gray.600' } }}
 							color={'black'}
 							fontWeight={600}
-							onClick={() => null}
+							onClick={() => navigate('/register')}
 						>
 							Registrieren
 						</Button>
