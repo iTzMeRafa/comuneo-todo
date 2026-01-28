@@ -1,60 +1,33 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "target": "ESNext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext",
-      "es6"
-    ],
-    "plugins": [
-      {
-        "transform": "ts-transformer-keys/transformer"
-      }
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "Bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "noImplicitThis": true,
-    "noImplicitAny": false,
-    "strictNullChecks": true,
-    "incremental": true
-  },
-  "paths": {
-    "@services/*": [
-      "services/*"
-    ],
-    "@interfaces/*": [
-      "interfaces/*"
-    ],
-    "@modules/*": [
-      "node_modules/*"
-    ]
-  },
-  "ts-node": {
-    "compiler": "typescript",
-    "require": [
-      "tsconfig-paths/register"
-    ]
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    ".next",
-    ".vercel",
-    "out"
-  ]
+	"compilerOptions": {
+		"baseUrl": ".",
+		"target": "ESNext",
+		"lib": ["dom", "dom.iterable", "esnext", "es6"],
+		"plugins": [
+			{
+				"transform": "ts-transformer-keys/transformer"
+			}
+		],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "Bundler",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"noImplicitThis": true,
+		"noImplicitAny": false,
+		"strictNullChecks": true,
+		"incremental": true
+	},
+	"ts-node": {
+		"compiler": "typescript",
+		"require": ["tsconfig-paths/register"]
+	},
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+	"exclude": ["node_modules", ".next", ".vercel", "out"]
 }
