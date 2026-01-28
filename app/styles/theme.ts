@@ -85,7 +85,6 @@ const globalCss = (mode: 'light' | 'dark') => {
 		globalCss: {
 			'html, body, .dark, .light': {
 				mode: 'dark !important',
-				// overflowX: 'hidden',
 			},
 			em: {
 				fontStyle: 'italic',
@@ -94,7 +93,6 @@ const globalCss = (mode: 'light' | 'dark') => {
 				backgroundColor: 'gray.50',
 				padding: '0 8px',
 				borderRadius: '3px',
-				// display: 'inline-block',
 				boxDecorationBreak: 'clone',
 			},
 			'.chakra-theme': {

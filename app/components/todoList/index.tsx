@@ -19,7 +19,6 @@ function TodoList(): JSX.Element {
 	const borderColor = 'gray.200';
 	const mutedText = 'gray.500';
 
-	// Fetch user
 	useEffect(() => {
 		(async () => {
 			try {
@@ -31,7 +30,6 @@ function TodoList(): JSX.Element {
 		})();
 	}, []);
 
-	// Fetch todos
 	useEffect(() => {
 		if (!userAccount) return;
 
@@ -67,7 +65,6 @@ function TodoList(): JSX.Element {
 		fetchTodos();
 	}, [userAccount]);
 
-	// Toggle parent + children recursively AND update database
 	const toggleTodoRecursive = async (id: string, checked: boolean) => {
 		const getAllChildIds = (parentId: string): string[] => {
 			const directChildren = todos.filter((t) => t.parent_id === parentId);
@@ -80,10 +77,8 @@ function TodoList(): JSX.Element {
 		const childIds = getAllChildIds(id);
 		const allIdsToUpdate = [id, ...childIds];
 
-		// Update local state immediately
 		setTodos((prev) => prev.map((todo) => (allIdsToUpdate.includes(todo.$id) ? { ...todo, checked } : todo)));
 
-		// Update Appwrite rows
 		try {
 			for (const todoId of allIdsToUpdate) {
 				await tablesDB.updateRow({
@@ -98,7 +93,6 @@ function TodoList(): JSX.Element {
 		}
 	};
 
-	// Delete parent + children
 	const deleteTodoRecursive = async (id: string) => {
 		const getAllChildIds = (parentId: string): string[] => {
 			const directChildren = todos.filter((t) => t.parent_id === parentId);
@@ -126,7 +120,6 @@ function TodoList(): JSX.Element {
 		}
 	};
 
-	// Add new todo
 	const addTodo = async (parentId: string | null) => {
 		if (!newTodoTitle.trim() || !userAccount) return;
 
@@ -162,7 +155,6 @@ function TodoList(): JSX.Element {
 		}
 	};
 
-	// Render recursively
 	const renderTodos = (parentId: string | null, level = 0) => {
 		const children = todos.filter((todo) => todo.parent_id === parentId);
 
@@ -215,7 +207,6 @@ function TodoList(): JSX.Element {
 											</Checkbox.Label>
 										</Checkbox.Root>
 
-										{/* Add child todo button */}
 										<IconButton
 											ml={2}
 											size="sm"
@@ -227,7 +218,6 @@ function TodoList(): JSX.Element {
 										</IconButton>
 									</Flex>
 
-									{/* Delete button */}
 									<IconButton
 										mr={3}
 										aria-label="Todo Eintrag löschen"
@@ -239,7 +229,6 @@ function TodoList(): JSX.Element {
 									</IconButton>
 								</Flex>
 
-								{/* Input for adding a child */}
 								{addingParentId === todo.$id && (
 									<Flex mt={2} gap={2} mr={3}>
 										<Input
@@ -270,7 +259,6 @@ function TodoList(): JSX.Element {
 					);
 				})}
 
-				{/* Root add button */}
 				{parentId === null && addingParentId === null && (
 					<Flex mt={2} ml={2}>
 						<Input
