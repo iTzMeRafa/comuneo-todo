@@ -1,14 +1,10 @@
-import { client } from 'app/libs/appwrite';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UserRegistrationFormInterface, userRegistrationFormSchema } from 'app/schemas/userRegistrationFormSchema';
 import { Controller, useForm } from 'react-hook-form';
 import { account } from 'app/libs/appwrite';
 import { useNavigate } from 'react-router';
-import { Button, Field, Flex, Input, Separator, Text, Heading, Container } from '@chakra-ui/react';
+import { Button, Field, Input, Heading, Container } from '@chakra-ui/react';
 import { ArrowRightIcon } from 'lucide-react';
 import { toaster } from 'app/components/toaster';
-import { UserLoginFormInterface, userLoginFormSchema } from 'app/schemas/userLoginFormSchema';
-import { UpdateEmailFormInterface, updateEmailFormSchema } from 'app/schemas/updateEmailFormSchema';
 import React, { useEffect } from 'react';
 import { UserInterface } from 'app/interfaces/UserInterface';
 import { UpdatePasswordFormInterface, updatePasswordFormSchema } from 'app/schemas/updatePasswordFormSchema';
@@ -18,7 +14,7 @@ export async function loader() {
 }
 
 export default function UpdatePasswordForm() {
-	let navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const [userAccount, setUserAccount] = React.useState<UserInterface | null>(null);
 

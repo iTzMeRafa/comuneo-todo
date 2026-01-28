@@ -1,5 +1,4 @@
 import React, { JSX, useContext, useEffect } from 'react';
-import { client } from 'app/libs/appwrite';
 import { account } from 'app/libs/appwrite';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router';
@@ -33,7 +32,7 @@ function Navbar(props: PropsInterface): JSX.Element {
 
 	const [userAccount, setUserAccount] = React.useState<UserInterface | null>(null);
 
-	let navigate = useNavigate();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		(async () => {

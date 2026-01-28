@@ -13,7 +13,7 @@ export async function loader() {
 }
 
 export default function Login() {
-	let navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const {
 		control,

@@ -1,5 +1,5 @@
 import React, { JSX, useEffect } from 'react';
-import { Box, Button } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { UserInterface } from 'app/interfaces/UserInterface';
 import { account } from 'app/libs/appwrite';
 import LandingSection from 'app/components/landingSection';

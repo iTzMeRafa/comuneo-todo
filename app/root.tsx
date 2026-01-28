@@ -43,7 +43,7 @@ export default function App() {
 	return <Outlet />;
 }
 
-export function ErrorBoundary({ error }) {
+export function ErrorBoundary({ error }: { error: any }) {
 	let message = 'Oops!';
 	let details = 'Ein Fehler ist aufgetreten.';
 	let stack: string | undefined;

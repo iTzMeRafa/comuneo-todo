@@ -28,7 +28,6 @@ export default defineConfig([
 		extends: compat.extends(
 			'eslint:recommended',
 			'plugin:@typescript-eslint/recommended',
-			'next/core-web-vitals',
 			'plugin:react/recommended',
 			'plugin:prettier/recommended'
 		),
@@ -60,7 +59,6 @@ export default defineConfig([
 		rules: {
 			'unused-imports/no-unused-imports': 'error',
 			'@typescript-eslint/no-unused-vars': 'off',
-			'@next/next/no-img-element': 'off',
 			'@typescript-eslint/no-non-null-assertion': 'off',
 			'react-hooks/exhaustive-deps': 'off',
 			'no-console': 'warn',

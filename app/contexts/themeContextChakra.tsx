@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ThemeContextInterface, ThemeProviderInterface } from 'app/interfaces/themeProviderInterface';
 import { getSystemTheme } from 'app/styles/theme';
 import { ChakraProvider, Theme } from '@chakra-ui/react';

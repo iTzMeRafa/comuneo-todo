@@ -1,4 +1,3 @@
-import { client } from 'app/libs/appwrite';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { UserRegistrationFormInterface, userRegistrationFormSchema } from 'app/schemas/userRegistrationFormSchema';
 import { Controller, useForm } from 'react-hook-form';
@@ -16,7 +15,7 @@ export async function loader() {
 }
 
 export default function Register() {
-	let navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const [userAccount, setUserAccount] = React.useState<UserInterface | null>(null);
 
