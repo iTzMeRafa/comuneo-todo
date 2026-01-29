@@ -1,5 +1,5 @@
 import React, { JSX, useEffect } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Spinner } from '@chakra-ui/react';
 import { UserInterface } from 'app/interfaces/UserInterface';
 import { account } from 'app/libs/appwrite';
 import LandingSection from 'app/components/landingSection';
@@ -15,6 +15,7 @@ export async function loader() {
 
 export function Home(props: PropsInterface): JSX.Element {
 	const [userAccount, setUserAccount] = React.useState<UserInterface | null>(null);
+	const [isLoading, setIsLoading] = React.useState(true);
 
 	useEffect(() => {
 		(async () => {
@@ -23,9 +24,19 @@ export function Home(props: PropsInterface): JSX.Element {
 				setUserAccount(userAccount);
 			} catch (err) {
 				setUserAccount(null);
+			} finally {
+				setIsLoading(false);
 			}
 		})();
 	}, [account]);
+
+	if (isLoading) {
+		return (
+			<Box>
+				<Spinner mr={5} /> Lädt...
+			</Box>
+		);
+	}
 
 	return (
 		<Box>
