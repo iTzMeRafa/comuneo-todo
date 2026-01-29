@@ -19,6 +19,12 @@ Eine rekursive To-Do-Anwendung, die auf Remix.run und Appwrite basiert.
 * **Testing**: Vitest & React Testing Library
 * **Linting**: Eslint & Prettier
 
+## 📋 Requirements
+
+- **Node.js** ≥ **20.19.0**
+- **Yarn** ≥ 1.22 (or Corepack-enabled Yarn)
+- **Git**
+
 ## 🚀 Setup & Installation
 
 1. **Repository klonen**:
