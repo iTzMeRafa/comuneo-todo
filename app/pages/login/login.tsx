@@ -105,7 +105,7 @@ export default function Login() {
 							_hover={{ bg: 'gray.50', _dark: { bg: 'gray.600' } }}
 							color={'black'}
 							fontWeight={600}
-							onClick={() => navigate('/register')}
+							onClick={() => navigate('/signup')}
 						>
 							Registrieren
 						</Button>

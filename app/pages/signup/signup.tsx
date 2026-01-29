@@ -14,7 +14,7 @@ export async function loader() {
 	return null;
 }
 
-export default function Register() {
+export default function Signup() {
 	const navigate = useNavigate();
 
 	const [userAccount, setUserAccount] = React.useState<UserInterface | null>(null);

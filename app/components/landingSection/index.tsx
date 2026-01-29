@@ -15,7 +15,7 @@ function LandingSection(props: PropsInterface): JSX.Element {
 					Organisiere deine Aufgaben mit verschachtelten To-dos. Bleib fokussiert. Bleib produktiv.
 				</Text>
 
-				<Link to={'/register'}>
+				<Link to={'/signup'}>
 					<Button bg="primary" size="lg">
 						Los gehts
 					</Button>

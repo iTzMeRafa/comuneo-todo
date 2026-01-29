@@ -146,7 +146,7 @@ function Navbar(props: PropsInterface): JSX.Element {
 										<Text color={'primary'}>Anmelden</Text>
 									</Button>
 								</Link>
-								<Link to={'/register'}>
+								<Link to={'/signup'}>
 									<Button
 										display={{ base: 'none', lg: 'inline-flex' }}
 										fontSize={'sm'}
