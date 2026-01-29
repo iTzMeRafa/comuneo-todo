@@ -56,8 +56,6 @@ export default function Signup() {
 				name: data.username,
 			});
 
-			console.log(user);
-
 			toaster.create({
 				duration: 10000,
 				title: ``,
@@ -68,8 +66,6 @@ export default function Signup() {
 
 			reset();
 		} catch (error: any) {
-			console.log('error');
-			console.log(error);
 			toaster.create({
 				description: 'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
 				type: 'error',
