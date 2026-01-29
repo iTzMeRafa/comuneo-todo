@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router';
 import React, { useEffect } from 'react';
 import { UserInterface } from 'app/interfaces/UserInterface';
 import GuestRoute from 'app/components/guestRoute';
+import { ID } from 'appwrite';
 
 export async function loader() {
 	return null;
@@ -21,16 +22,14 @@ export default function Signup() {
 
 	useEffect(() => {
 		(async () => {
-			const userAccount = await account.get();
-			setUserAccount(userAccount);
+			try {
+				const accountData = await account.get();
+				setUserAccount(accountData);
+			} catch {
+				setUserAccount(null);
+			}
 		})();
 	}, [account]);
-
-	useEffect(() => {
-		if (userAccount) {
-			navigate('/');
-		}
-	}, [userAccount]);
 
 	const {
 		control,
@@ -51,11 +50,13 @@ export default function Signup() {
 	const onSubmit = async (data: UserRegistrationFormInterface) => {
 		try {
 			const user = await account.create({
-				userId: 'unique()',
+				userId: ID.unique(),
 				email: data.email,
 				password: data.password,
 				name: data.username,
 			});
+
+			console.log(user);
 
 			toaster.create({
 				duration: 10000,
@@ -67,6 +68,8 @@ export default function Signup() {
 
 			reset();
 		} catch (error: any) {
+			console.log('error');
+			console.log(error);
 			toaster.create({
 				description: 'Etwas ist schiefgelaufen. Bitte versuche es erneut.',
 				type: 'error',
